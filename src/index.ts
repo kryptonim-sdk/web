@@ -51,11 +51,16 @@ export class KryptonimSdk {
     if (this.apiType === ApiType.Production)
       this._apiUrl = PRODUCTION_REDIRECT_FORM_API_URL;
     else this._apiUrl = INTEGRATION_REDIRECT_FORM_API_URL;
+
+    this.getRedirectFormUrl = this.getRedirectFormUrl.bind(this);
   }
 
-  private _buildUrl(config: UrlBuildConfig) {
-    const urlElements = [config.apiUrl];
-    const queryCompatibileObject = buildQueryCompatibileObject(config);
+  public getRedirectFormUrl(config?: KryptonimSdkConfig): string {
+    const urlElements = [this._apiUrl];
+    const queryCompatibileObject = buildQueryCompatibileObject({
+      ...config,
+      apiUrl: this._apiUrl,
+    });
     const filteredQueryParams: Record<string, string> = {};
 
     const getKeyValue =
@@ -81,9 +86,5 @@ export class KryptonimSdk {
     }
 
     return urlElements.join("");
-  }
-
-  public getRedirectFormUrl(config?: KryptonimSdkConfig): string {
-    return this._buildUrl({ apiUrl: this._apiUrl, ...config });
   }
 }
