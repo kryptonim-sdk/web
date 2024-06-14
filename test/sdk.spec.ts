@@ -3,7 +3,7 @@ import {
   INTEGRATION_REDIRECT_FORM_API_URL,
   KryptonimSdk,
   PRODUCTION_REDIRECT_FORM_API_URL,
-} from "../src/index";
+} from "../src/sdk";
 import { ApiType, KryptonimSdkConfig, PaymentMethod } from "../src/types";
 
 describe("KryptonimSDK", () => {
