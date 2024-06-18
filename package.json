@@ -7,7 +7,9 @@
   "types": "dist/types/index.d.ts",
   "scripts": {
     "build": "rimraf dist && tsc && rollup -c rollup.config.ts --configPlugin typescript2",
-    "test": "vitest"
+    "test": "vitest",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm test"
   },
   "keywords": [],
   "author": "",
